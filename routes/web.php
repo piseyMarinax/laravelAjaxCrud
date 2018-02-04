@@ -16,4 +16,10 @@ Route::get('/', function () {
 });
 
 //Route::get('/','postController@index');
-Route::get('/post','postController@index');
+// Route::get('/post','postController@index');
+// Route::POST('addPost','postController@addPost');
+
+Route::group(['middleware' => ['web']],function(){
+   Route::get('post','postController@index');
+   Route::POST('addPost','postController@addPost');
+});
